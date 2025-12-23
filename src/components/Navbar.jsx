@@ -2,40 +2,30 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "text-blue-400 font-bold underline"
+      : "text-black hover:text-gray-300";
+
   return (
     <div>
       <h1>RouteCraft</h1>
       <nav>
         <NavLink
           to="/"
-          className={
-            ({ isActive }) =>
-              isActive
-                ? "text-blue-400 font-bold underline" 
-                : "text-black hover:text-gray-300" 
-          }
+          className={linkClass}
         >
           Home
         </NavLink>
         <NavLink
           to="/login"
-          className={
-            ({ isActive }) =>
-              isActive
-                ? "text-blue-400 font-bold underline" 
-                : "text-black hover:text-gray-300" 
-          }
+          className={linkClass}
         >
           Login
         </NavLink>
         <NavLink
           to="/dashboard"
-          className={
-            ({ isActive }) =>
-              isActive
-                ? "text-blue-400 font-bold underline" 
-                : "text-black hover:text-gray-300" 
-          }
+          className={linkClass}
         >
           Dashboard
         </NavLink>
