@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import DashboardLayout from "./layouts/DashboardLayout";
 import DashboardHome from "./pages/DashboardHome";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -17,8 +18,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index  element={<DashboardHome />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<DashboardHome />} />
           <Route path="/dashboard/users" element={<Users />} />
           <Route path="/dashboard/users/:id" element={<UserDetails />} />
           <Route path="/dashboard/profile" element={<Profile />} />
